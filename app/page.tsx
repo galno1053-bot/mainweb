@@ -1,200 +1,127 @@
-import Image from "next/image";
+import Badge from "../components/Badge";
+import Button from "../components/Button";
+import Card from "../components/Card";
+import CryptoFiatBridge from "../components/CryptoFiatBridge";
+import FAQAccordion from "../components/FAQAccordion";
+import Navbar from "../components/Navbar";
+import Section from "../components/Section";
+import Stepper from "../components/Stepper";
+import { BRAND_NAME } from "../lib/constants";
 
-export default function Home() {
+export default function Page() {
+  const steps = [
+    {
+      title: "Lock ETH or USDC on Base",
+      description:
+        "Sign a single L2 transaction to lock funds into the vault. Collateral state is readable by anyone.",
+    },
+    {
+      title: "Manual IDR transfer",
+      description:
+        "Ops team moves Rupiah through supported banks while referencing your onchain lock as proof of funds.",
+    },
+    {
+      title: "IDR lands in your account",
+      description:
+        "Recipient receives a local transfer with your memo. Status stays tied to the lock reference.",
+    },
+    {
+      title: "Repay to unlock",
+      description:
+        "Send back IDR (or remit onchain) to release the original ETH/USDC. No surprises—line turns calm blue.",
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "What chains are supported for collateral?",
+      answer:
+        "Base L2 to keep gas minimal and settlement fast. Additional chains can be added by deploying the same vault contract.",
+    },
+    {
+      question: "How do you verify the fiat leg?",
+      answer:
+        "Each IDR transfer is tagged with a reference from the lock transaction hash. Operations reconcile manually and update the offchain mirror.",
+    },
+    {
+      question: "Is there slippage?",
+      answer:
+        "No automated swap happens here—the crypto stays locked 1:1. FX handling occurs outside the contract so rates are quoted upfront.",
+    },
+    {
+      question: "What if motion is disabled?",
+      answer:
+        "If your system prefers reduced motion, the bridge shows a static snapshot without moving dots or glow pulses.",
+    },
+  ];
+
   return (
-    <div className="page">
-      <header className="nav">
-        <div className="brand">
-          <Image src="/logo.svg" alt="Nexa logo" width={30} height={30} />
-          <div className="brand-text">
-            <span className="brand-name">Nexa</span>
-            <span className="brand-tag">Crypto Lending IDR</span>
-          </div>
-        </div>
-        <nav className="nav-links">
-          <a href="#features">Fitur</a>
-          <a href="#flow">Alur</a>
-          <a href="#faq">FAQ</a>
-          <a href="#docs">Docs</a>
-        </nav>
-        <button className="primary" type="button">
-          Launch App
-        </button>
-      </header>
+    <div className="relative">
+      <div className="grain-overlay" aria-hidden />
+      <Navbar />
 
-      <main>
-        <section className="hero">
-          <div className="hero-text">
-            <p className="eyebrow">Nexa Lending</p>
-            <h1>Pinjam IDR dengan jaminan crypto yang aman.</h1>
-            <p className="lead">
-              Ringkas, transparan, dan profesional. Saat ini mendukung ETH dan
-              USDC di Base.
-            </p>
-            <div className="actions">
-              <button className="primary" type="button">
-                Mulai Sekarang
-              </button>
-              <button className="ghost" type="button">
-                Lihat Docs
-              </button>
-            </div>
-            <div className="chips">
-              <span className="chip">ETH</span>
-              <span className="chip">USDC</span>
-              <span className="chip">Base</span>
-              <span className="chip outline">IDR</span>
-            </div>
+      <main className="max-w-6xl mx-auto px-6 space-y-16 pb-20">
+        <Section
+          kicker="Base → Indonesia"
+          title={`${BRAND_NAME} bridges ETH & USDC into Rupiah with bank-grade clarity.`}
+          description="Lock crypto onchain, trigger a manual IDR transfer, and repay to unlock. See the rails in motion—purple for crypto, blue for fiat."
+          align="left"
+        >
+          <div className="flex flex-wrap items-center gap-4">
+            <Button variant="primary">Start bridging</Button>
+            <Button variant="ghost">View docs</Button>
+            <Badge tone="purple">Glow on crypto</Badge>
+            <Badge tone="blue">Base blue for IDR</Badge>
           </div>
+        </Section>
 
-          <div className="bridge">
-            <div className="bridge-side">
-              <span className="label">CRYPTO</span>
-              <span className="value">ETH · USDC</span>
-            </div>
+        <CryptoFiatBridge />
 
-            <div className="bridge-center" aria-label="Bridge animation">
-              <svg viewBox="0 0 480 120" className="bridge-svg" role="img">
-                <path
-                  d="M20 96 C120 10, 360 10, 460 96"
-                  fill="none"
-                  stroke="#1f2937"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-                <circle r="4" fill="#2e6bff">
-                  <animateMotion
-                    dur="3.2s"
-                    repeatCount="indefinite"
-                    path="M20 96 C120 10, 360 10, 460 96"
-                  />
-                </circle>
-              </svg>
-              <span className="bridge-note">Connecting</span>
-            </div>
+        <Section
+          kicker="Controls"
+          title="Guardrails for moving value between rails"
+          description="Minimal surface area: clear ownership of crypto, annotated fiat transfers, and predictable unlock rules."
+        >
+          <div className="grid md:grid-cols-3 gap-4">
+            <Card
+              eyebrow="Transparency"
+              title="Traceable lock hash"
+              description="Bridge line references the vault tx hash so fiat ops know which lock to honor."
+              icon={<span>🔗</span>}
+            />
+            <Card
+              eyebrow="Coverage"
+              title="Manual IDR, visible state"
+              description="Blue glow shows the fiat leg is in motion while collateral remains locked."
+              icon={<span>🏦</span>}
+            />
+            <Card
+              eyebrow="Safety"
+              title="Repay → unlock"
+              description="Right-to-left dot reminds users the vault only opens after repayment confirmation."
+              icon={<span>✅</span>}
+            />
+          </div>
+        </Section>
 
-            <div className="bridge-side right">
-              <span className="label">FIAT</span>
-              <span className="value">IDR / Rupiah</span>
-            </div>
-          </div>
-        </section>
+        <Section
+          id="how"
+          kicker="Flow"
+          title="Step-by-step across both rails"
+          description="Designed for operators and users who need to see exactly where value sits."
+        >
+          <Stepper steps={steps} />
+        </Section>
 
-        <section className="trust">
-          <p>Trusted by builders &amp; partners</p>
-          <div className="trust-logos">
-            <span>Uniswap</span>
-            <span>Indodax</span>
-            <span>CertiK</span>
-            <span>Nusa</span>
-            <span>Base</span>
-          </div>
-        </section>
-
-        <section id="features" className="features">
-          <div className="section-head">
-            <p className="section-kicker">Features</p>
-            <h2>Key features yang penting dan jelas.</h2>
-          </div>
-          <div className="feature-grid">
-            <article>
-              <h3>Agunan Aman</h3>
-              <p>Crypto tetap terkunci sampai pinjaman lunas.</p>
-            </article>
-            <article>
-              <h3>Pencairan Cepat</h3>
-              <p>Pinjaman IDR cair ke rekening lokal.</p>
-            </article>
-            <article>
-              <h3>Biaya Transparan</h3>
-              <p>Rasio jelas dan simulasi sebelum transaksi.</p>
-            </article>
-            <article>
-              <h3>Akses Global</h3>
-              <p>Siap dipakai siapa pun dengan wallet crypto.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="flow" className="split">
-          <div className="split-text">
-            <p className="section-kicker">Flow</p>
-            <h2>Alur ringkas untuk sampai ke rupiah.</h2>
-            <p className="lead">
-              Deposit agunan, pilih jumlah pinjaman, dana cair. Semua dilakukan
-              dengan kontrol penuh dan dokumentasi yang jelas.
-            </p>
-            <button className="ghost" type="button">
-              Lihat Detail
-            </button>
-          </div>
-          <div className="split-card">
-            <div className="step">
-              <span>01</span>
-              <div>
-                <h4>Kunci Agunan</h4>
-                <p>Deposit ETH/USDC ke kontrak.</p>
-              </div>
-            </div>
-            <div className="step">
-              <span>02</span>
-              <div>
-                <h4>Pinjam IDR</h4>
-                <p>Pilih jumlah, dana cair ke rekening.</p>
-              </div>
-            </div>
-            <div className="step">
-              <span>03</span>
-              <div>
-                <h4>Lunasi</h4>
-                <p>Bayar pinjaman, agunan kembali.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="faq" className="faq">
-          <div className="section-head">
-            <p className="section-kicker">FAQ</p>
-            <h2>Frequently asked questions.</h2>
-          </div>
-          <div className="faq-list">
-            <details open>
-              <summary>Apa itu Nexa Lending?</summary>
-              <p>Platform untuk pinjam IDR dengan jaminan crypto.</p>
-            </details>
-            <details>
-              <summary>Aset apa yang didukung?</summary>
-              <p>ETH dan USDC di jaringan Base.</p>
-            </details>
-            <details>
-              <summary>Bagaimana dana IDR dicairkan?</summary>
-              <p>Ditransfer ke rekening bank lokal setelah konfirmasi.</p>
-            </details>
-            <details>
-              <summary>Apakah biaya transparan?</summary>
-              <p>Semua biaya dan rasio ditampilkan sebelum transaksi.</p>
-            </details>
-          </div>
-        </section>
-
-        <section id="docs" className="cta-band">
-          <div>
-            <h2>Siap untuk versi web app yang lengkap.</h2>
-            <p className="lead">
-              Struktur ini sudah rapi untuk pengembangan dashboard lending.
-            </p>
-          </div>
-          <button className="primary" type="button">
-            Masuk App
-          </button>
-        </section>
+        <Section
+          id="faq"
+          kicker="Support"
+          title="FAQ"
+          description="Common answers for compliance, operations, and user experience."
+        >
+          <FAQAccordion items={faqs} />
+        </Section>
       </main>
-
-      <footer className="footer">
-        <span>Nexa Lending</span>
-        <span>Crypto collateral for real IDR.</span>
-      </footer>
     </div>
   );
 }

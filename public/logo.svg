@@ -1,16 +1,14 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="nexaBlue" x1="70" y1="60" x2="430" y2="460" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#2e6bff" />
-      <stop offset="100%" stop-color="#0f3fbf" />
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B99CFF"/>
+      <stop offset="100%" stop-color="#0052FF"/>
     </linearGradient>
   </defs>
-  <path
-    d="M78 440 L170 72 H286 L236 258 L308 332 L270 440 Z"
-    fill="url(#nexaBlue)"
-  />
-  <path
-    d="M252 72 H438 L348 440 H226 L306 274 L254 214 Z"
-    fill="url(#nexaBlue)"
-  />
+  <rect width="160" height="160" rx="32" fill="#0b1021"/>
+  <path d="M40 90L75 55L100 80L120 60" stroke="url(#g1)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="75" cy="55" r="8" fill="#B99CFF"/>
+  <circle cx="120" cy="60" r="8" fill="#0052FF"/>
+  <circle cx="40" cy="90" r="8" fill="#B99CFF"/>
+  <circle cx="100" cy="80" r="8" fill="#0052FF"/>
 </svg>

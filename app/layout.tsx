@@ -1,34 +1,33 @@
-import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import type { Metadata } from "next";
+import { Sora } from "next/font/google";
+import { BRAND_NAME, APP_URL } from "../lib/constants";
 
-const manrope = Manrope({
+const sora = Sora({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-body",
-  display: "swap"
-});
-
-const space = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-  display: "swap"
+  variable: "--font-sora",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Nexa - Crypto Lending IDR",
-  description: "Nexa menjembatani crypto ke rupiah dengan jaminan ETH/USDC di Base."
+  title: `${BRAND_NAME} | Crypto ↔ Fiat Bridge`,
+  description:
+    "Bridge ETH & USDC into Indonesian Rupiah with clear onchain/offramp visibility.",
+  metadataBase: new URL(APP_URL),
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${manrope.variable} ${space.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body
+        className={`${sora.variable} font-sans bg-slate-950 text-slate-50 antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
