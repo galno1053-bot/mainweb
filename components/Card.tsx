@@ -1,37 +1,22 @@
-import { ReactNode } from "react";
+﻿import { ReactNode } from "react";
 
 interface Props {
-  eyebrow?: string;
   title: string;
-  description?: string;
+  description: string;
+  badge?: string;
   icon?: ReactNode;
-  children?: ReactNode;
 }
 
-export default function Card({
-  eyebrow,
-  title,
-  description,
-  icon,
-  children,
-}: Props) {
+export default function Card({ title, description, badge, icon }: Props) {
   return (
-    <div className="glass flex flex-col gap-3 rounded-2xl border border-slate-200/80 p-5 md:p-6">
-      <div className="flex items-start gap-3">
-        {icon && (
-          <div className="grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700">
-            {icon}
-          </div>
-        )}
-        <div className="space-y-1">
-          {eyebrow && (
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{eyebrow}</p>
-          )}
-          <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
-        </div>
-      </div>
-      {description && <p className="text-sm text-slate-600">{description}</p>}
-      {children}
-    </div>
+    <article className="rounded-xl border border-black/10 bg-white p-6 text-center shadow-[0_14px_28px_rgba(0,0,0,0.06)]">
+      {badge && (
+        <p className="text-xs font-light uppercase tracking-[0.14em] text-baseBlue">{badge}</p>
+      )}
+      {icon && <div className="mt-4 flex justify-center text-black">{icon}</div>}
+      <h3 className="mt-4 text-xl font-medium text-black">{title}</h3>
+      <p className="mt-3 text-sm font-normal leading-relaxed text-black/70">{description}</p>
+    </article>
   );
 }
+

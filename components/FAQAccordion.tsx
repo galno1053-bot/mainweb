@@ -1,43 +1,45 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import Badge from "./Badge";
 
-type FAQ = {
+type FAQItem = {
   question: string;
   answer: string;
 };
 
 interface Props {
-  items: FAQ[];
+  items: FAQItem[];
 }
 
 export default function FAQAccordion({ items }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="space-y-3">
-      {items.map((faq, idx) => {
-        const isOpen = openIndex === idx;
+    <div className="mx-auto max-w-3xl space-y-3">
+      {items.map((item, index) => {
+        const isOpen = openIndex === index;
+
         return (
-          <div
-            key={faq.question}
-            className="glass rounded-xl border border-slate-200/80 p-4 md:p-5"
+          <article
+            key={item.question}
+            className="rounded-xl border border-black/10 bg-white p-5 text-center shadow-[0_12px_24px_rgba(0,0,0,0.05)]"
           >
             <button
-              className="flex w-full items-center justify-between gap-3 text-left"
-              onClick={() => setOpenIndex(isOpen ? null : idx)}
+              type="button"
+              className="w-full text-center"
+              onClick={() => setOpenIndex(isOpen ? null : index)}
             >
-              <div className="flex items-center gap-3">
-                <Badge tone="blue">{`P${idx + 1}`}</Badge>
-                <p className="font-semibold text-slate-900">{faq.question}</p>
-              </div>
-              <span className="text-xl text-slate-600">{isOpen ? "-" : "+"}</span>
+              <p className="text-base font-medium text-black">{item.question}</p>
+              <p className="mt-2 text-sm font-light text-baseBlue">{isOpen ? "Tutup" : "Buka"}</p>
             </button>
-            {isOpen && <p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p>}
-          </div>
+
+            {isOpen && (
+              <p className="mt-4 text-sm font-normal leading-relaxed text-black/70">{item.answer}</p>
+            )}
+          </article>
         );
       })}
     </div>
   );
 }
+
