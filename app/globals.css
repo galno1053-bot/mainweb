@@ -43,9 +43,10 @@ button {
 }
 
 .nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
+  column-gap: 28px;
   padding: 20px clamp(18px, 4vw, 56px);
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.9);
@@ -84,9 +85,21 @@ button {
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 26px;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.nav-links a {
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .primary,
@@ -134,13 +147,13 @@ main {
 
 .hero-text h1 {
   font-family: var(--font-display), "Segoe UI", sans-serif;
-  font-size: clamp(2.2rem, 4.6vw, 3.4rem);
-  line-height: 1.1;
+  font-size: clamp(2.6rem, 5.2vw, 4.2rem);
+  line-height: 1.05;
 }
 
 .lead {
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .actions {
@@ -252,6 +265,12 @@ main {
   margin-bottom: 20px;
 }
 
+.section-head h2 {
+  font-family: var(--font-display), "Segoe UI", sans-serif;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  line-height: 1.15;
+}
+
 .section-kicker {
   color: var(--accent);
   text-transform: uppercase;
@@ -273,19 +292,19 @@ main {
 .feature-grid article {
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 18px;
+  padding: 20px 22px;
   background: var(--section);
 }
 
 .feature-grid h3 {
   font-family: var(--font-display), "Segoe UI", sans-serif;
-  font-size: 1.02rem;
+  font-size: 1.08rem;
   margin-bottom: 8px;
 }
 
 .feature-grid p {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
 }
 
 .split {
@@ -294,7 +313,7 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
   align-items: center;
-  padding: 28px;
+  padding: 32px;
   background: var(--section);
   border-radius: 20px;
   border: 1px solid var(--line);
@@ -357,6 +376,7 @@ main {
   list-style: none;
   position: relative;
   padding-right: 24px;
+  font-size: 1rem;
 }
 
 .faq-list summary::after {
@@ -387,6 +407,12 @@ main {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+}
+
+.cta-band h2 {
+  font-family: var(--font-display), "Segoe UI", sans-serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  margin-bottom: 6px;
 }
 
 .footer {
