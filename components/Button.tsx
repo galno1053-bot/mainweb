@@ -1,44 +1,34 @@
-﻿import Link from "next/link";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes } from "react";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "ghost" | "outline";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  href?: string;
   variant?: Variant;
-  children: ReactNode;
 }
 
 export default function Button({
-  href,
   variant = "primary",
   className,
   children,
   ...rest
 }: Props) {
   const base =
-    "inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-baseBlue/40";
+    "inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200";
 
   const styles: Record<Variant, string> = {
     primary:
-      "border border-brandPurple bg-brandPurple text-white shadow-[0_14px_28px_rgba(185,156,255,0.32)] hover:bg-brandPurple/90",
-    secondary: "border border-baseBlue bg-white text-baseBlue hover:bg-baseBlue/10",
+      "bg-gradient-to-r from-brandPurple to-baseBlue text-white shadow-lg shadow-baseBlue/20 hover:brightness-110",
+    ghost:
+      "border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900",
+    outline:
+      "border border-slate-300 bg-transparent text-slate-700 hover:border-slate-400 hover:text-slate-900",
   };
 
-  const classes = [base, styles[variant], className].filter(Boolean).join(" ");
-
-  if (href) {
-    return (
-      <Link href={href} className={classes}>
-        {children}
-      </Link>
-    );
-  }
+  const cx = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(" ");
 
   return (
-    <button className={classes} {...rest}>
+    <button className={cx(base, styles[variant], className)} {...rest}>
       {children}
     </button>
   );
 }
-
