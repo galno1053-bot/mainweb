@@ -111,6 +111,9 @@ export default function Page() {
             <span className="text-base font-semibold">{BRAND_NAME}</span>
           </a>
           <nav className="hidden items-center gap-6 text-sm md:flex">
+            <a href="#about" className="hover:opacity-70">
+              About
+            </a>
             <a href="#fitur" className="hover:opacity-70">
               Fitur
             </a>
@@ -147,6 +150,29 @@ export default function Page() {
             >
               Docs
             </a>
+          </div>
+        </section>
+
+        <section id="about" className="py-20 text-center">
+          <h2 className="text-3xl font-semibold">About Nexa</h2>
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-black/70">
+            Nexa adalah platform pinjaman kripto-ke-fiat yang fokus pada alur sederhana, transparan,
+            dan mudah dipahami. Jaminan aset diproses onchain, sementara pencairan Rupiah dilakukan
+            lewat transfer bank lokal.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <article className="rounded-xl border border-black/10 p-5">
+              <h3 className="text-base font-semibold">Transparan</h3>
+              <p className="mt-2 text-sm text-black/70">Status pinjaman bisa dipantau dengan jelas.</p>
+            </article>
+            <article className="rounded-xl border border-black/10 p-5">
+              <h3 className="text-base font-semibold">Praktis</h3>
+              <p className="mt-2 text-sm text-black/70">Alur dibuat ringkas dari jaminan sampai pelunasan.</p>
+            </article>
+            <article className="rounded-xl border border-black/10 p-5">
+              <h3 className="text-base font-semibold">Fleksibel</h3>
+              <p className="mt-2 text-sm text-black/70">Pelunasan dapat dilakukan kapan saja.</p>
+            </article>
           </div>
         </section>
 
