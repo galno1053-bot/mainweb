@@ -1,0 +1,479 @@
+﻿:root {
+  --bg: #0b0f12;
+  --bg-2: #121822;
+  --surface: rgba(16, 23, 30, 0.85);
+  --surface-strong: rgba(20, 30, 38, 0.92);
+  --line: rgba(255, 255, 255, 0.08);
+  --ink: #f4f7f5;
+  --muted: rgba(244, 247, 245, 0.64);
+  --accent: #22f1a3;
+  --accent-2: #3ad5ff;
+  --accent-3: #f9d648;
+  --glow: rgba(34, 241, 163, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sora), "Segoe UI", sans-serif;
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(58, 213, 255, 0.16), transparent 60%),
+    radial-gradient(900px 600px at 20% 10%, rgba(34, 241, 163, 0.18), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at top, black, transparent 70%);
+  opacity: 0.4;
+}
+
+.orb {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(0px);
+  opacity: 0.5;
+}
+
+.orb-a {
+  background: radial-gradient(circle, rgba(34, 241, 163, 0.4), transparent 70%);
+  top: -120px;
+  left: 12%;
+}
+
+.orb-b {
+  background: radial-gradient(circle, rgba(58, 213, 255, 0.35), transparent 70%);
+  bottom: -200px;
+  right: 10%;
+}
+
+.watermark {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.05;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.watermark img {
+  width: min(60vw, 560px);
+  height: auto;
+}
+
+.nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px clamp(20px, 5vw, 64px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-chakra), "Segoe UI", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.logo-text {
+  font-size: 0.95rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.primary,
+.ghost {
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #0b0f12;
+  box-shadow: 0 12px 30px rgba(34, 241, 163, 0.2);
+}
+
+.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(34, 241, 163, 0.28);
+}
+
+.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  padding: 0 clamp(20px, 5vw, 64px) 72px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.hero-text {
+  display: grid;
+  gap: 20px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.hero-title {
+  font-family: var(--font-chakra), "Segoe UI", sans-serif;
+  font-size: clamp(2.4rem, 4.6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.support {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.support-label {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+}
+
+.chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(34, 241, 163, 0.12);
+  color: var(--ink);
+  border: 1px solid rgba(34, 241, 163, 0.3);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.chip.neutral {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+.hero-bridge {
+  display: flex;
+  justify-content: center;
+}
+
+.bridge-card {
+  width: min(560px, 100%);
+  background: linear-gradient(160deg, var(--surface), rgba(8, 12, 16, 0.9));
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.bridge-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% 30% 40% -20%;
+  background: radial-gradient(circle, rgba(34, 241, 163, 0.25), transparent 70%);
+  opacity: 0.7;
+}
+
+.bridge-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 16px;
+  z-index: 1;
+}
+
+.bridge-side {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--font-chakra), "Segoe UI", sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.bridge-side.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.bridge-side.right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.bridge-title {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.bridge-mini {
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--muted);
+}
+
+.bridge-center {
+  display: flex;
+  justify-content: center;
+}
+
+.bridge-svg {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+}
+
+.bridge-path {
+  stroke-dasharray: 16 10;
+  animation: dash 4s linear infinite;
+}
+
+.bridge-glow {
+  opacity: 0.35;
+  filter: drop-shadow(0 0 18px var(--glow));
+  animation-duration: 6s;
+}
+
+.bridge-dot {
+  filter: drop-shadow(0 0 10px rgba(249, 214, 72, 0.8));
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.bridge-caption {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cards {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card h3 {
+  font-family: var(--font-chakra), "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(58, 213, 255, 0.4);
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+  padding: 32px clamp(20px, 5vw, 64px) 48px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.rise {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: rise 0.8s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.05s;
+}
+
+.delay-2 {
+  animation-delay: 0.12s;
+}
+
+.delay-3 {
+  animation-delay: 0.18s;
+}
+
+.delay-4 {
+  animation-delay: 0.26s;
+}
+
+.delay-5 {
+  animation-delay: 0.34s;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .bridge-stage {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bridge-side.left,
+  .bridge-side.right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
