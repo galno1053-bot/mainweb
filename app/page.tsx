@@ -1,26 +1,32 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="page">
-      <div className="backdrop" aria-hidden="true">
+      <div className="bg" aria-hidden="true">
         <span className="grid" />
-        <span className="orb orb-a" />
-        <span className="orb orb-b" />
+        <span className="halo halo-blue" />
+        <span className="halo halo-yellow" />
+        <span className="slash slash-left" />
+        <span className="slash slash-right" />
       </div>
 
-      <div className="watermark" aria-hidden="true">
-        <Image src="/logo.svg" alt="" width={560} height={560} priority />
+      <div className="logo-ghost" aria-hidden="true">
+        <Image src="/logo.svg" alt="" width={720} height={720} priority />
       </div>
 
       <header className="nav">
-        <div className="logo">
-          <Image src="/logo.svg" alt="Nexa logo" width={36} height={36} />
-          <span className="logo-text">Nexa</span>
+        <div className="brand">
+          <Image src="/logo.svg" alt="Nexa logo" width={34} height={34} />
+          <div className="brand-text">
+            <span className="brand-name">Nexa</span>
+            <span className="brand-sub">Crypto Lending IDR</span>
+          </div>
         </div>
         <nav className="nav-links">
           <a href="#">Produk</a>
-          <a href="#">Cara Kerja</a>
+          <a href="#">Skema</a>
+          <a href="#">Jaminan</a>
           <a href="#">Docs</a>
         </nav>
         <div className="nav-actions">
@@ -35,16 +41,14 @@ export default function Home() {
 
       <main>
         <section className="hero">
-          <div className="hero-text">
-            <p className="eyebrow rise delay-1">Nexa Lending</p>
-            <h1 className="hero-title rise delay-2">
-              Jembatan crypto ke rupiah yang nyata.
-            </h1>
-            <p className="hero-desc rise delay-3">
-              Pinjam IDR dengan jaminan crypto. Singkat, transparan, dan cair
-              cepat. Saat ini hanya mendukung ETH dan USDC di Base.
+          <div className="hero-copy">
+            <p className="kicker">Nexa Lending</p>
+            <h1>Jembatani crypto ke rupiah tanpa drama.</h1>
+            <p className="lead">
+              Pinjam uang nyata IDR dengan jaminan ETH atau USDC di Base.
+              Ringkas, transparan, dan siap untuk web app.
             </p>
-            <div className="hero-actions rise delay-4">
+            <div className="cta">
               <button className="primary" type="button">
                 Mulai Sekarang
               </button>
@@ -52,115 +56,183 @@ export default function Home() {
                 Lihat Docs
               </button>
             </div>
-            <div className="support rise delay-5">
-              <span className="support-label">Support saat ini</span>
+            <div className="chip-row">
               <span className="chip">ETH</span>
               <span className="chip">USDC</span>
               <span className="chip neutral">Base</span>
+              <span className="chip outline">IDR</span>
             </div>
           </div>
 
           <div className="hero-bridge">
             <div className="bridge-card">
+              <div className="bridge-header">
+                <span className="bridge-kicker">Bridge Hook</span>
+                <span className="bridge-status">Connecting</span>
+              </div>
               <div className="bridge-stage">
-                <div className="bridge-side left">
-                  <span className="bridge-title">CRYPTO</span>
-                  <span className="bridge-mini">ETH · USDC</span>
+                <div className="bridge-panel">
+                  <span className="panel-title">CRYPTO</span>
+                  <span className="panel-sub">ETH · USDC</span>
                 </div>
 
-                <div className="bridge-center">
+                <div className="bridge-anim">
                   <svg
                     className="bridge-svg"
-                    viewBox="0 0 700 190"
+                    viewBox="0 0 620 200"
                     role="img"
                     aria-label="Bridge animation"
                   >
                     <defs>
                       <linearGradient
-                        id="bridgeGradient"
+                        id="bridgeLine"
                         x1="0%"
                         y1="0%"
                         x2="100%"
                         y2="0%"
                       >
-                        <stop offset="0%" stopColor="#22f1a3" />
-                        <stop offset="50%" stopColor="#3ad5ff" />
-                        <stop offset="100%" stopColor="#f9d648" />
+                        <stop offset="0%" stopColor="#2e6bff" />
+                        <stop offset="55%" stopColor="#4a83ff" />
+                        <stop offset="100%" stopColor="#e8ff45" />
                       </linearGradient>
                     </defs>
                     <path
-                      className="bridge-path bridge-glow"
-                      d="M40 150 C180 20, 520 20, 660 150"
+                      className="bridge-arc bridge-glow"
+                      d="M40 160 C170 20, 450 20, 580 160"
                       fill="none"
-                      stroke="url(#bridgeGradient)"
+                      stroke="url(#bridgeLine)"
                       strokeWidth="10"
                       strokeLinecap="round"
-                      strokeLinejoin="round"
                     />
                     <path
-                      className="bridge-path"
-                      d="M40 150 C180 20, 520 20, 660 150"
+                      className="bridge-arc"
+                      d="M40 160 C170 20, 450 20, 580 160"
                       fill="none"
-                      stroke="url(#bridgeGradient)"
+                      stroke="url(#bridgeLine)"
                       strokeWidth="6"
                       strokeLinecap="round"
-                      strokeLinejoin="round"
                     />
-                    <circle className="bridge-dot" r="6" fill="#f4f7f5">
+                    <circle className="bridge-dot" r="6" fill="#f7f8ff">
                       <animateMotion
-                        dur="4s"
+                        dur="3.6s"
                         repeatCount="indefinite"
-                        path="M40 150 C180 20, 520 20, 660 150"
+                        path="M40 160 C170 20, 450 20, 580 160"
                       />
                     </circle>
-                    <rect
-                      x="24"
-                      y="120"
-                      width="28"
-                      height="56"
-                      rx="12"
-                      fill="#1e2530"
-                    />
-                    <rect
-                      x="648"
-                      y="120"
-                      width="28"
-                      height="56"
-                      rx="12"
-                      fill="#1e2530"
-                    />
+                    <circle
+                      className="bridge-dot bridge-dot-2"
+                      r="4"
+                      fill="#e8ff45"
+                    >
+                      <animateMotion
+                        dur="3.6s"
+                        begin="1.2s"
+                        repeatCount="indefinite"
+                        path="M40 160 C170 20, 450 20, 580 160"
+                      />
+                    </circle>
                   </svg>
+                  <div className="bridge-pylons">
+                    <span />
+                    <span />
+                  </div>
                 </div>
 
-                <div className="bridge-side right">
-                  <span className="bridge-title">FIAT</span>
-                  <span className="bridge-mini">IDR / Rupiah</span>
+                <div className="bridge-panel right">
+                  <span className="panel-title">FIAT</span>
+                  <span className="panel-sub">IDR / Rupiah</span>
                 </div>
               </div>
-              <p className="bridge-caption">Jaminan crypto, cair rupiah.</p>
+              <div className="bridge-footer">
+                <span>Jaminan crypto, cair rupiah.</span>
+                <span className="bridge-note">Support: ETH &amp; USDC di Base</span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="cards">
-          <article className="card">
+        <section className="value">
+          <article className="value-card">
             <h3>Agunan Terkunci</h3>
-            <p>Crypto tetap aman hingga pinjaman lunas.</p>
+            <p>Crypto tetap aman sampai pinjaman selesai.</p>
           </article>
-          <article className="card">
-            <h3>Tarik IDR Cepat</h3>
-            <p>Cair ke rekening rupiah tanpa ribet.</p>
+          <article className="value-card">
+            <h3>Cair IDR Cepat</h3>
+            <p>Tarik rupiah langsung ke rekening lokal.</p>
           </article>
-          <article className="card">
-            <h3>Base Ready</h3>
-            <p>Support ETH &amp; USDC di jaringan Base.</p>
+          <article className="value-card">
+            <h3>Rasio Jelas</h3>
+            <p>Simulasi transparan sebelum kamu mulai.</p>
           </article>
+        </section>
+
+        <section className="app-preview">
+          <div className="app-copy">
+            <p className="kicker muted">Web App</p>
+            <h2>Siap untuk dashboard lending penuh.</h2>
+            <p className="lead">
+              Struktur layout sudah disiapkan untuk halaman app. Nantinya fokus
+              pada monitoring agunan, simulasi LTV, dan penarikan IDR.
+            </p>
+            <button className="ghost" type="button">
+              Masuk ke App
+            </button>
+          </div>
+          <div className="app-card">
+            <div className="app-top">
+              <span />
+              <span />
+              <span />
+              <div className="app-title">Nexa App Preview</div>
+            </div>
+            <div className="app-body">
+              <div className="app-metric">
+                <span className="metric-label">Collateral</span>
+                <span className="metric-value">3.2 ETH</span>
+              </div>
+              <div className="app-metric">
+                <span className="metric-label">Pinjaman</span>
+                <span className="metric-value">IDR 48.000.000</span>
+              </div>
+              <div className="app-bar">
+                <span />
+              </div>
+              <div className="app-row">
+                <span>Health</span>
+                <span className="status">Safe</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="steps">
+          <div className="steps-head">
+            <h2>Alur singkat</h2>
+            <p>3 langkah untuk sampai ke rupiah.</p>
+          </div>
+          <div className="steps-grid">
+            <div className="step">
+              <span className="step-num">01</span>
+              <h3>Kunci agunan</h3>
+              <p>Deposit ETH atau USDC ke kontrak.</p>
+            </div>
+            <div className="step">
+              <span className="step-num">02</span>
+              <h3>Pinjam IDR</h3>
+              <p>Pilih jumlah, dana cair ke rekening.</p>
+            </div>
+            <div className="step">
+              <span className="step-num">03</span>
+              <h3>Lunasi</h3>
+              <p>Bayar pinjaman, agunan kembali.</p>
+            </div>
+          </div>
         </section>
       </main>
 
       <footer className="footer">
         <span>Nexa Lending</span>
-        <span>Bridge crypto ke fiat IDR.</span>
+        <span>Crypto collateral for real IDR.</span>
       </footer>
     </div>
   );

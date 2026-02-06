@@ -1,16 +1,16 @@
-﻿<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="nexaGrad" x1="70" y1="60" x2="430" y2="460" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#2d333a" />
-      <stop offset="100%" stop-color="#0a0d10" />
+    <linearGradient id="nexaBlue" x1="70" y1="60" x2="430" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2e6bff" />
+      <stop offset="100%" stop-color="#0f3fbf" />
     </linearGradient>
   </defs>
   <path
     d="M78 440 L170 72 H286 L236 258 L308 332 L270 440 Z"
-    fill="url(#nexaGrad)"
+    fill="url(#nexaBlue)"
   />
   <path
     d="M252 72 H438 L348 440 H226 L306 274 L254 214 Z"
-    fill="url(#nexaGrad)"
+    fill="url(#nexaBlue)"
   />
 </svg>

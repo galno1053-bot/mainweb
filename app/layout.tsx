@@ -1,24 +1,25 @@
-﻿import type { Metadata } from "next";
-import { Chakra_Petch, Sora } from "next/font/google";
+import type { Metadata } from "next";
+import { Space_Grotesk, Unbounded } from "next/font/google";
 import "./globals.css";
 
-const sora = Sora({
+const space = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-sora",
+  variable: "--font-space",
   display: "swap"
 });
 
-const chakra = Chakra_Petch({
+const unbounded = Unbounded({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-chakra",
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
   display: "swap"
 });
 
 export const metadata: Metadata = {
-  title: "Nexa - Crypto to Rupiah Lending",
-  description: "Nexa memudahkan pinjam IDR dengan jaminan crypto ETH/USDC di Base."
+  title: "Nexa - Crypto Lending IDR",
+  description:
+    "Nexa menjembatani crypto ke rupiah dengan jaminan ETH/USDC di Base."
 };
 
 export default function RootLayout({
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${sora.variable} ${chakra.variable}`}>
+    <html lang="id" className={`${space.variable} ${unbounded.variable}`}>
       <body>{children}</body>
     </html>
   );
