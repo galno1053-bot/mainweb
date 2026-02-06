@@ -17,14 +17,14 @@ export default function Button({
 
   const styles: Record<Variant, string> = {
     primary:
-      "bg-gradient-to-r from-brandPurple to-baseBlue text-slate-950 shadow-lg shadow-baseBlue/25 hover:brightness-110",
-    ghost: "text-slate-100 bg-white/5 hover:bg-white/10 border border-white/10",
+      "bg-gradient-to-r from-brandPurple to-baseBlue text-white shadow-lg shadow-baseBlue/20 hover:brightness-110",
+    ghost:
+      "border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900",
     outline:
-      "text-white border border-white/30 hover:border-white/60 bg-transparent",
+      "border border-slate-300 bg-transparent text-slate-700 hover:border-slate-400 hover:text-slate-900",
   };
 
-  const cx = (...parts: (string | undefined)[]) =>
-    parts.filter(Boolean).join(" ");
+  const cx = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(" ");
 
   return (
     <button className={cx(base, styles[variant], className)} {...rest}>

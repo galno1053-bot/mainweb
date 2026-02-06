@@ -22,23 +22,19 @@ export default function FAQAccordion({ items }: Props) {
         return (
           <div
             key={faq.question}
-            className="glass rounded-xl border border-white/10 p-4 md:p-5"
+            className="glass rounded-xl border border-slate-200/80 p-4 md:p-5"
           >
             <button
-              className="w-full flex items-center justify-between gap-3 text-left"
+              className="flex w-full items-center justify-between gap-3 text-left"
               onClick={() => setOpenIndex(isOpen ? null : idx)}
             >
               <div className="flex items-center gap-3">
-                <Badge tone="blue">{`Q${idx + 1}`}</Badge>
-                <p className="font-semibold text-white">{faq.question}</p>
+                <Badge tone="blue">{`P${idx + 1}`}</Badge>
+                <p className="font-semibold text-slate-900">{faq.question}</p>
               </div>
-              <span className="text-xl text-slate-200">
-                {isOpen ? "–" : "+"}
-              </span>
+              <span className="text-xl text-slate-600">{isOpen ? "-" : "+"}</span>
             </button>
-            {isOpen && (
-              <p className="mt-3 text-slate-300 leading-relaxed">{faq.answer}</p>
-            )}
+            {isOpen && <p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p>}
           </div>
         );
       })}

@@ -10,9 +10,9 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: `${BRAND_NAME} | Crypto ↔ Fiat Bridge`,
+  title: `${BRAND_NAME} | Jembatan Kripto ke Rupiah`,
   description:
-    "Bridge ETH & USDC into Indonesian Rupiah with clear onchain/offramp visibility.",
+    "Kunci ETH dan USDC di Base, salurkan Rupiah, lalu lunasi untuk membuka jaminan.",
   metadataBase: new URL(APP_URL),
 };
 
@@ -22,10 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${sora.variable} font-sans bg-slate-950 text-slate-50 antialiased`}
-      >
+    <html lang="id">
+      <body className={`${sora.variable} font-sans bg-white text-slate-900 antialiased`}>
         {children}
       </body>
     </html>

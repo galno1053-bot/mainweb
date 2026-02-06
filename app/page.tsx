@@ -11,47 +11,47 @@ import { BRAND_NAME } from "../lib/constants";
 export default function Page() {
   const steps = [
     {
-      title: "Lock ETH or USDC on Base",
+      title: "Kunci ETH atau USDC di Base",
       description:
-        "Sign a single L2 transaction to lock funds into the vault. Collateral state is readable by anyone.",
+        "Pengguna menandatangani satu transaksi L2 untuk menaruh dana ke brankas. Status jaminan bisa diverifikasi publik.",
     },
     {
-      title: "Manual IDR transfer",
+      title: "Transfer IDR dilakukan manual",
       description:
-        "Ops team moves Rupiah through supported banks while referencing your onchain lock as proof of funds.",
+        "Tim operasional mengirim Rupiah melalui bank mitra dengan referensi hash penguncian onchain sebagai bukti.",
     },
     {
-      title: "IDR lands in your account",
+      title: "Dana Rupiah masuk ke rekening",
       description:
-        "Recipient receives a local transfer with your memo. Status stays tied to the lock reference.",
+        "Penerima memperoleh transfer lokal sesuai instruksi. Status tetap terhubung ke referensi transaksi penguncian.",
     },
     {
-      title: "Repay to unlock",
+      title: "Pelunasan untuk membuka jaminan",
       description:
-        "Send back IDR (or remit onchain) to release the original ETH/USDC. No surprises—line turns calm blue.",
+        "Setelah pelunasan terkonfirmasi, brankas membuka ETH atau USDC sesuai porsi yang dikunci di awal.",
     },
   ];
 
   const faqs = [
     {
-      question: "What chains are supported for collateral?",
+      question: "Jaringan apa yang didukung untuk jaminan?",
       answer:
-        "Base L2 to keep gas minimal and settlement fast. Additional chains can be added by deploying the same vault contract.",
+        "Saat ini fokus di Base agar biaya gas lebih efisien dan finalitas cepat. Ekspansi jaringan bisa ditambah lewat deployment brankas serupa.",
     },
     {
-      question: "How do you verify the fiat leg?",
+      question: "Bagaimana verifikasi sisi fiat dilakukan?",
       answer:
-        "Each IDR transfer is tagged with a reference from the lock transaction hash. Operations reconcile manually and update the offchain mirror.",
+        "Setiap transfer IDR memakai referensi hash penguncian. Tim operasional melakukan rekonsiliasi manual agar pencatatan onchain dan offchain konsisten.",
     },
     {
-      question: "Is there slippage?",
+      question: "Apakah ada slippage?",
       answer:
-        "No automated swap happens here—the crypto stays locked 1:1. FX handling occurs outside the contract so rates are quoted upfront.",
+        "Tidak ada swap otomatis pada alur ini. Kripto tetap terkunci sebagai jaminan, sedangkan nilai fiat dikonfirmasi saat penawaran awal.",
     },
     {
-      question: "What if motion is disabled?",
+      question: "Apa yang terjadi jika reduced motion aktif?",
       answer:
-        "If your system prefers reduced motion, the bridge shows a static snapshot without moving dots or glow pulses.",
+        "Animasi titik bergerak dan efek cahaya akan dimatikan otomatis, lalu jembatan ditampilkan sebagai tampilan statis.",
     },
   ];
 
@@ -60,64 +60,64 @@ export default function Page() {
       <div className="grain-overlay" aria-hidden />
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-6 space-y-16 pb-20">
+      <main className="mx-auto max-w-6xl space-y-16 px-6 pb-20">
         <Section
-          kicker="Base → Indonesia"
-          title={`${BRAND_NAME} bridges ETH & USDC into Rupiah with bank-grade clarity.`}
-          description="Lock crypto onchain, trigger a manual IDR transfer, and repay to unlock. See the rails in motion—purple for crypto, blue for fiat."
+          kicker="Base ke Indonesia"
+          title={`${BRAND_NAME} menghubungkan ETH dan USDC ke Rupiah dengan alur yang jelas.`}
+          description="Kunci aset di onchain, proses transfer IDR manual, lalu lunasi untuk membuka jaminan. Semua tahap terlihat dalam satu visual jembatan."
           align="left"
         >
           <div className="flex flex-wrap items-center gap-4">
-            <Button variant="primary">Start bridging</Button>
-            <Button variant="ghost">View docs</Button>
-            <Badge tone="purple">Glow on crypto</Badge>
-            <Badge tone="blue">Base blue for IDR</Badge>
+            <Button variant="primary">Mulai Sekarang</Button>
+            <Button variant="ghost">Lihat Dokumentasi</Button>
+            <Badge tone="purple">Sisi kripto berpendar ungu</Badge>
+            <Badge tone="blue">Sisi Rupiah memakai Base Blue</Badge>
           </div>
         </Section>
 
         <CryptoFiatBridge />
 
         <Section
-          kicker="Controls"
-          title="Guardrails for moving value between rails"
-          description="Minimal surface area: clear ownership of crypto, annotated fiat transfers, and predictable unlock rules."
+          kicker="Kontrol"
+          title="Rambu aman agar perpindahan nilai tetap terjaga"
+          description="Permukaan produk dibuat ringkas: kepemilikan jaminan jelas, transfer fiat teranotasi, dan aturan buka jaminan tetap tegas."
         >
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid gap-4 md:grid-cols-3">
             <Card
-              eyebrow="Transparency"
-              title="Traceable lock hash"
-              description="Bridge line references the vault tx hash so fiat ops know which lock to honor."
-              icon={<span>🔗</span>}
+              eyebrow="Transparansi"
+              title="Hash penguncian dapat ditelusuri"
+              description="Jembatan mengaitkan proses operasional dengan hash brankas agar referensi transaksi tidak terputus."
+              icon={<span>TX</span>}
             />
             <Card
-              eyebrow="Coverage"
-              title="Manual IDR, visible state"
-              description="Blue glow shows the fiat leg is in motion while collateral remains locked."
-              icon={<span>🏦</span>}
+              eyebrow="Operasional"
+              title="Transfer IDR tetap terlihat"
+              description="Glow biru menandakan proses transfer fiat berjalan sambil jaminan tetap terkunci."
+              icon={<span>IDR</span>}
             />
             <Card
-              eyebrow="Safety"
-              title="Repay → unlock"
-              description="Right-to-left dot reminds users the vault only opens after repayment confirmation."
-              icon={<span>✅</span>}
+              eyebrow="Kepastian"
+              title="Lunasi lalu buka jaminan"
+              description="Titik kanan ke kiri mengingatkan bahwa jaminan hanya terbuka setelah pelunasan tervalidasi."
+              icon={<span>OK</span>}
             />
           </div>
         </Section>
 
         <Section
           id="how"
-          kicker="Flow"
-          title="Step-by-step across both rails"
-          description="Designed for operators and users who need to see exactly where value sits."
+          kicker="Proses"
+          title="Langkah demi langkah pada dua rel"
+          description="Dirancang agar tim operasional dan pengguna bisa melihat posisi nilai setiap saat."
         >
           <Stepper steps={steps} />
         </Section>
 
         <Section
           id="faq"
-          kicker="Support"
-          title="FAQ"
-          description="Common answers for compliance, operations, and user experience."
+          kicker="Bantuan"
+          title="Pertanyaan Umum"
+          description="Jawaban cepat untuk aspek operasional, kepatuhan, dan pengalaman pengguna."
         >
           <FAQAccordion items={faqs} />
         </Section>
